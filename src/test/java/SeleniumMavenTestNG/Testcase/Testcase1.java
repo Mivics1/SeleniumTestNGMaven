@@ -3,6 +3,7 @@ package SeleniumMavenTestNG.Testcase;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -12,8 +13,10 @@ public class Testcase1 {
 	public static WebDriver driver;
 	@BeforeTest
 	public void LaunchBrowser() {
+		EdgeOptions option = new EdgeOptions();
+		option.addArguments("--headless");
 		System.setProperty("webdriver.edge.driver","C:\\\\Selenium-drivers\\\\msedgedriver.exe");
-		driver = new EdgeDriver();
+		driver = new EdgeDriver(option);
 		driver.manage().window().maximize();
 	}
 	
