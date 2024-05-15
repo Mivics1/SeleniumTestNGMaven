@@ -17,7 +17,6 @@ public class Testcase1 {
 		option.addArguments("--headless");
 		System.setProperty("webdriver.edge.driver","C:\\\\Selenium-drivers\\\\msedgedriver.exe");
 		driver = new EdgeDriver(option);
-		driver.manage().window().maximize();
 	}
 	
 	@Test (priority = 1)
