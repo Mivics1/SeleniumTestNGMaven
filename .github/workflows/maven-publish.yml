@@ -13,32 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.1.4
-        
-      - name: Set up JDK
-        uses: actions/setup-java@v4.2.1
-        with:
-        java-version: '17'
-        distribution: 'temurin
-
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      - name: Build and run Selenium TestNG tests
-        run: |
-          mvn -B clean test
-        env:
-          SELENIUM_BROWSER: edge
-          SELENIUM_GRID_URL: http://localhost:4444/wd/hub
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: target/surefire-reports
+        - uses: actions/checkout@v4
+        - name: Set up JDK 11 for x64
+        - uses: actions/setup-java@v4
+          with:
+            java-version: '11'
+            distribution: 'temurin'
+            architecture: x64
