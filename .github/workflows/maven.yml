@@ -29,6 +29,8 @@ jobs:
         cache: maven
     - name: Build and test
       run: mvn -B package --file pom.xml
+    - name: RunMavenTest
+      uses: Maes95/maven-action@1.1.0       
 
     # # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     # - name: Update dependency graph
